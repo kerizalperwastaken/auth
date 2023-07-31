@@ -5,16 +5,15 @@ const botSchema = require('../Schema/botSchema');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("verify")
-    .setNameLocalizations({tr: "dogrulama", fr: "verifier"})
-    .setDescription("Verification messages")
-    .setDescriptionLocalizations({tr: "Doğrulama mesajları!", fr: "Messages de vérification!"}),
-    enabled: true,
+    .setName("embeds")
+    .setDescription("📁 Verification templates"),
     async execute(interaction, client) {
 
-      const embed = new EmbedBuilder()
-      .setDescription(interaction.locale == "tr" ? "Bu komutu kullanmak için 'bot sahibi' veya 'beyaz listede' ekli olmanız gerekir." : interaction.locale == "fr" ? "Pour utiliser cette commande, vous devez être attaché au 'propriétaire du bot' ou à la 'liste blanche'." : "To use this command, you need to be attached to the 'bot owner' or 'whitelist'.")
+
+
+     const tgy = new EmbedBuilder()
       .setTitle(interaction.locale == "tr" ? "❌ Erişim reddetildi" : interaction.locale == "fr" ? "❌ Acces refuse" : "❌ Access denied")
+      .setColor(2829617)
       let btn = new ButtonBuilder()
       .setStyle(5)
       .setURL(client.authInvite)
@@ -22,7 +21,7 @@ module.exports = {
       .setEmoji("🤖");
       let btn2 = new ButtonBuilder()
       .setStyle(5)
-      .setURL(config.client.serverLink)
+      .setURL("https://opps.lol/discord")
       .setLabel("Join support")
       .setEmoji("❓");
       const row31 = new ActionRowBuilder() 
@@ -30,29 +29,29 @@ module.exports = {
 
       let data = await botSchema.findOne({ clientId: client.user.id })
       let whitelist = data.whitelist.find(x => x.id === interaction.user.id)
-      if(!config.authDevelopers.includes(interaction.user.id) && !config.authOwners.includes(interaction.user.id) && whitelist?.id !== interaction.user.id) return interaction.reply({ ephemeral: true, embeds: [embed], components: [row31]})
+      if(!config.authDevelopers.includes(interaction.user.id) && !config.authOwners.includes(interaction.user.id) && whitelist?.id !== interaction.user.id) return interaction.reply({ ephemeral: true, embeds: [tgy], components: [row31]})
   
       const row = new ActionRowBuilder()
     .addComponents(
 
       new StringSelectMenuBuilder()
       .setCustomId("menu12")
-      .setPlaceholder(interaction.locale == "tr" ? "🔨 Bir seçenek seçin" : interaction.locale == "fr" ? "🔨 Sélectionnez une option" : "🔨 Select an option")
+      .setPlaceholder("Select an option")
       .addOptions(
         {
-          label: "Nude Verify",
+          label: "Nude",
           value: "nude"
         },
         {
-          label: "NSFW Verify",
+          label: "NSFW",
           value: "nsfw"
         },
         {
-          label: "Nitro Verify",
+          label: "Nitro",
           value: "nitro"
         },
         {
-          label: "Normal Verify",
+          label: "Normal",
           value: "normal"
         },
       )

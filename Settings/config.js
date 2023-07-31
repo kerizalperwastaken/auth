@@ -1,33 +1,32 @@
 module.exports = {
 
-    token: 'MTA1MDg1OTU2MTcwMTA4MTE2MA.G6pXjc.mR4UxmnyfDJqdCYOJIhEAzWTU8oqAVF9HTUEMw',
-    
-    authDevelopers: ['1032357870353784862','1043550134249726012'], // developers
-    authOwners: ['1046816796344340561'], // whitelist
+    token: process.env.token,
+    authDevelopers: ['1125797410690564187','1125797410690564187'], // developers
+    authOwners: ['1125797410690564187'], // whitelist
 
     webhook: {
-        name: 'AuthCord',
-        avatar: 'https://cdn.discordapp.com/avatars/1009773285577347193/fd0968c08b2cb3311672d030836da7c8.png',
-        url: 'https://discord.com/api/webhooks/1050862599765504030/46YIqo_8J60gHItLsRRG7NzOinuK8t4xl9r2fjX9XsfHtMJc_unWxQyjVByAuG-k5678',
+        name: 'Log',
+           avatar: 'https://cdn.discordapp.com/attachments/1045426334853242890/1127654156790931498/EVENING_GFX_1.png',
+        url: process.env.webhook,
     },
 
     client: {
-        id: "1050859561701081160",
-        secret: "sQd7ZcZpmxLhHfQlDVsNG42SLxtlDIHV",
-        redirect_uri: "http://93.190.8.234:319/auth/discord/callback",
+        id: process.env.id,
+        secret: process.env.secret,
+        redirect_uri: "https://verify.k3riz.repl.co/auth",
         scope: ['identify', 'guilds.join'],
-        footer: "AuthCord v1.0", // footer
-        serverLink: "https://discord.gg/badge", // server
+        footer: "v1.0", // footer
+        serverLink: "https://discord.gg/hdporns", // server
     },
 
     web: {
         port: 319,
-        apiKey: "oefduqyk2w2vxiju"
+        apiKey: "n7275m1rwnnlcjd0"
     },
 
     database: {
 
-        URI: 'mongodb+srv://Rowy:Rowy2004@cluster0.kvegz.mongodb.net/ahmett?retryWrites=true&w=majority',
+       URI: process.env.db,
 
     }
 

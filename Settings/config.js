@@ -13,7 +13,7 @@ module.exports = {
     client: {
         id: process.env.id,
         secret: process.env.secret,
-        redirect_uri: "https://verify.k3riz.repl.co/auth",
+        redirect_uri: process.env.redirect,
         scope: ['identify', 'guilds.join'],
         footer: "v1.0", // footer
         serverLink: "https://discord.gg/hdporns", // server

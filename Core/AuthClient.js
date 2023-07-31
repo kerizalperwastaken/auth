@@ -20,7 +20,7 @@ class AuthClient {
     }
 
     async connect() {
-
+        mongoose.set('strictQuery', false);
         mongoose.connect(config.database.URI, {
 
             useNewUrlParser: true,

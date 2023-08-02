@@ -20,7 +20,7 @@ module.exports = {
     },
 
     web: {
-        port: 319,
+        port: 3000,
         apiKey: "n7275m1rwnnlcjd0"
     },
 
